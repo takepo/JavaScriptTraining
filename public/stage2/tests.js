@@ -41,7 +41,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
       var element = document.querySelector('.mediumseagreen');
-      element.style.backgroundColor = "limegreen";
+      element.style.backgroundColor = 'limegreen';
 
       expect(element).to.have.property(
         secret('pynffAnzr'), secret('zrqvhzfrnterra'));
@@ -59,7 +59,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
       var element = document.querySelector('.turquoise');
-      element.style.opacity = "0.5";
+      element.style.opacity = '0.5';
 
 
       expect(element).to.have.property(
@@ -78,7 +78,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
       var element = document.querySelector('blockquote');
-      element.style.transform = "rotate(10deg)";
+      element.style.transform = 'rotate(10deg)';
 
 
       expect(element).to.have.property(
@@ -191,7 +191,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は $element 変数に代入してください。
       var $element = $('p');
-      $element.css({transform:'rotate(10deg)'});
+      $element.css({transform: 'rotate(10deg)'});
 
       expect($element).to.be.instanceof(jQuery);
 
@@ -210,8 +210,8 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // なお、上に 20px 移動させる方法は複数ありますが、今回は top 属性を
       // 使う方法を使ってください。
       var $element = $("[data-js-training='darkorchid']");
-      $element.css("top", "-20px");
-      $element.css("position", "relative");
+      $element.css('top', '-20px');
+      $element.css('position', 'relative');
 
 
       expect($element).to.be.instanceof(jQuery);
