@@ -17,10 +17,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       //
       // jQuery 版:
       //
-      // $('#firebrick').on('click', function(event) {
-      //   var $target = $(event.target);
-      //   $target.text(Number($target.text()) + 1);
-      // });
+      $('#firebrick').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) + 1);
+      });
       //
       // ここに上記のどちらかのコードを記述してください。
 
@@ -37,7 +37,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('2 番の要素の click イベントで要素内の数字を 1 ずつ小さくできる', function() {
 
       // ここにコードを記述してください。
-
+      $('#chocolate').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) - 1);
+      });
 
       var chocolate = document.getElementById('chocolate');
       chocolate.dispatchEvent(createClickEvent());
@@ -51,7 +54,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('3 番の要素の click イベントで要素を 10 度ずつ回転できる', function() {
 
       // ここにコードを記述してください。
-
+      $('.mediumseagreen').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) - 1);
+      });
 
       var mediumseagreen = document.querySelector('.mediumseagreen');
       mediumseagreen.dispatchEvent(createClickEvent());
