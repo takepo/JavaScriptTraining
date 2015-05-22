@@ -54,9 +54,12 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('3 番の要素の click イベントで要素を 10 度ずつ回転できる', function() {
 
       // ここにコードを記述してください。
+      var rotate = 0;
+
       $('.mediumseagreen').on('click', function(event) {
         var $target = $(event.target);
-        $target.text(Number($target.text()) - 1);
+        rotate += 10;
+        $target.css({ transform: 'rotate(' + rotate +'deg)' });
       });
 
       var mediumseagreen = document.querySelector('.mediumseagreen');
