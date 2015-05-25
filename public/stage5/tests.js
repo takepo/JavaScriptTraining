@@ -89,7 +89,7 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       // 作成した promise を promisedFriends 変数に代入してください。
       var promisedFriends = fetch(api + username).then(function(res) {
         return res.json();
-      });
+      })
 
 
       return expect(promisedFriends).to.eventually.have.length(2)
