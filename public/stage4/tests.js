@@ -107,10 +107,11 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       //
       // なお、expect(steelblue).to.be.null は上記のテストの要件を満たして
       // いないので、正解ではありません。
-
-      var steelblue = document.querySelector('.steelblue');
-      expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
-      done();
+      $('.steelblue').ready(function(){
+        var steelblue = document.querySelector('.steelblue');
+        expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
+        done();
+      });
     });
   });
 });
