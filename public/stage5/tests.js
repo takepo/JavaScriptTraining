@@ -101,12 +101,30 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var api = '/api/friends/';
       var username = 'Shen';
 
-      var promise = fetch(api + username).then(function(res) {
-        return res.json();
-      });
+      // 分からなかったので解答参考につくりました。(理解につとめたい)
+
+      // 友人の配列を取得
+      function getFriends(usernameToFetch) {
+        return fetch(api + usernameToFetch).then(function(res) {
+          return res.json();
+        });
+      }
+
+      // 配列を平たく
+      function flatMap(arrayToFlat) {
+        return arrayToFlat.reduce(function(flatArray, array) {
+          return flatArray.concat(array); //生成した新しい配列
+        }, []);
+      }
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
+      var promisedFriends =  getFriends(username)
+        .then(function(friends) {
+          return Promise.all(friends.map(getFriends));
+        })
+        .then(function(friendsArray) {
+          return flatMap(friendsArray);
+        });
 
 
       return expect(promisedFriends).to.eventually.have.length(1)
@@ -166,10 +184,37 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
     it('Github API を使って、VimL、Emacs Lisp でスターが最も多いプロダクト名を' +
        'それぞれ 1 つずつ取得できる', function() {
       var languages = [ 'VimL', '"Emacs Lisp"' ];
-      var mostPopularRepos = 'change me!';
 
       // 作成した promise を mostPopularRepos 変数に代入してください。
 
+      // 分からなかったので解答参考につくりました。(理解につとめたい)
+
+      //オブジェクトから、query stringを作る
+      function buildQueryString(queryMap) {
+        return Object.keys(queryMap).map(function(key){
+          return encodeURIComponent(key) + '=' + encodeURIComponent(queryMap[key]);
+        }).join('&');
+      }
+
+      //指定された言語で最もスターがおおいリポジトリ名を返す
+      function searchMostPopulerRepoByLanguage(lang) {
+        var queryString = buildQueryString({
+          q: 'language:' + lang,
+          sort: 'stars'
+        });
+
+        return fetch('https://api.github.com/search/repositories?' + queryString)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(result) {
+            return result.items[0].full_name;
+          });
+      }
+
+
+      var mostPopularRepos = Promise.all(
+        languages.map(searchMostPopulerRepoByLanguage));
 
       return expect(mostPopularRepos).to.eventually.have.length(2)
         .and.satisfy(function(names) {
