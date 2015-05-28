@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/bower_components/mocha/mocha.css" media="all">
   <link rel="stylesheet" href="/common/mocha-patch.css" media="all">
   <link rel="stylesheet" href="style.css" media="all">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <a href="sample" class="js-training-sample-link">サンプルパッケージ</a>
@@ -19,6 +20,8 @@
   <script src="/bower_components/chai-jquery/chai-jquery.js"></script>
   <script src="/bower_components/chai-as-promised/lib/chai-as-promised.js"></script>
   <script src="/bower_components/fetch/fetch.js"></script>
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script>
     mocha.ui('bdd');
     mocha.reporter('html');
@@ -30,5 +33,29 @@
     if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
     else { mocha.run(); }
   </script>
+
+  <form name="myform" action="">
+    <div class="form-group">
+      <div class="form-inline">
+      <select name="items" class="form-control">
+        <option value="りんご">りんご</option>
+        <option value="みかん">みかん</option>
+        <option value="もも">もも</option>
+      </select>
+      <select name="num" class="form-control">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+      </select>
+      <input type="button" class="btn btn-default" value="追加" onclick="add()"/>
+      <input type="button" class="btn btn-primary" value="クリア" onclick="clearData()"/>
+      <input type="button" class="btn btn-primary" value="合計" onclick="sumAlert()"/>
+      </div>
+    </div>
+  </form>
+  <br><br>
+  <table class="table" id="table">
+    <th>商品名</th><th>価格</th><th>個数</th><th>計</th>
+  </table>
 </body>
 </html>
